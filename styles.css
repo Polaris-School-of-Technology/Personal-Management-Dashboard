@@ -54,9 +54,22 @@ body {
   }
   
   li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     background-color: #fff;
     padding: 10px;
     margin-bottom: 5px;
     border: 1px solid #ddd;
     border-radius: 5px;
+  }
+
+  .delete-btn {
+    align-self: flex-end;
+    background-color: rgb(249, 220, 220)
+  }
+
+  .delete-btn:hover{
+    align-self: flex-end;
+    background-color: rgb(231, 85, 85)
   }
