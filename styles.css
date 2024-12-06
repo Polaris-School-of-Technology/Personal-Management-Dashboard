@@ -60,3 +60,14 @@ body {
     border: 1px solid #ddd;
     border-radius: 5px;
   }
+
+  #index{
+    width: 150px; 
+    padding: 5px; 
+    font-size: 14px;
+  }
+  #index1{
+    width: 150px;
+    padding: 5px;
+    font-size: 14px;
+  }
