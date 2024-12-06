@@ -1,62 +1,151 @@
+/* General Styles */
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f4;
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f0f4f8;
+  color: #333;
+}
+
+/* Header Styles */
+header {
+  background-color: #2B3A67; /* Deep Blue */
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+  margin: 0;
+  font-size: 2.5rem;
+}
+
+header nav ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 15px 0 0;
+}
+
+header nav ul li {
+  display: inline-block;
+  margin: 0 10px;
+}
+
+header nav ul li a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: 500;
+  padding: 8px 15px;
+  transition: background-color 0.3s;
+}
+
+header nav ul li a:hover {
+  background-color: #17C3B2; /* Vibrant Cyan */
+  border-radius: 5px;
+}
+
+/* Main Styles */
+main {
+  padding: 30px 20px;
+}
+
+section {
+  margin-bottom: 40px;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+section h2 {
+  margin-top: 0;
+  color: #2B3A67;
+  font-size: 1.8rem;
+  border-bottom: 2px solid #596270;
+  padding-bottom: 10px;
+}
+
+/* Input and Button Styles */
+input, textarea {
+  width: 100%;
+  padding: 12px 15px;
+  margin-top: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+button {
+  display: inline-block;
+  padding: 12px 20px;
+  background-color: #17C3B2;
+  color: white;
+  font-size: 1rem;
+  font-weight: 500;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+button:hover {
+  background-color: #149e90;
+  transform: scale(1.05);
+}
+
+button:active {
+  transform: scale(0.95);
+}
+
+/* List Styles */
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 20px 0 0;
+}
+
+li {
+  background-color: #F9FAFB;
+  padding: 12px 15px;
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background-color 0.3s;
+}
+
+li:hover {
+  background-color: #EFF6FF;
+}
+
+/* Weather Info Section */
+#weather-info {
+  text-align: center;
+  font-size: 1.2rem;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #F9FAFB;
+  margin-top: 10px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  header h1 {
+    font-size: 2rem;
   }
-  
-  header {
-    background-color: #4CAF50;
-    color: white;
-    padding: 20px;
-    text-align: center;
-  }
-  
-  header nav ul {
-    list-style-type: none;
-    padding: 0;
-  }
-  
-  header nav ul li {
-    display: inline;
-    margin: 0 10px;
-  }
-  
-  main {
-    padding: 20px;
-  }
-  
-  section {
-    margin-bottom: 30px;
-  }
-  
-  input, textarea {
-    width: 100%;
-    padding: 10px;
-    margin-top: 10px;
-  }
-  
+
   button {
-    padding: 10px 15px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    cursor: pointer;
+    width: 100%;
+    margin-top: 15px;
   }
-  
-  button:hover {
-    background-color: #45a049;
-  }
-  
-  ul {
-    padding: 0;
-    list-style-type: none;
-  }
-  
-  li {
-    background-color: #fff;
-    padding: 10px;
-    margin-bottom: 5px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-  }
+}
