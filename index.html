@@ -23,13 +23,15 @@
     <section id="tasks">
       <h2>Tasks</h2>
       <ul id="task-list"></ul>
-      <input type="text" id="task-input" placeholder="New Task">
+      <div id="errorForTask" style="color: red;"></div>
+      <input type="text" id="task-input" placeholder="New Task" required>
       <button id="add-task-btn">Add Task</button>
     </section>
 
     <section id="notes">
       <h2>Notes</h2>
-      <textarea id="note-input" placeholder="Write a note..."></textarea>
+      <div id="errorForNotes" style="color: red;"></div>
+      <textarea id="note-input" placeholder="Write a note..." required></textarea>
       <button id="save-note-btn">Save Note</button>
       <ul id="note-list"></ul>
     </section>
@@ -43,6 +45,7 @@
 
     <section id="goals">
       <h2>Goals</h2>
+      <div id="errorForGoals" style="color: red;"></div>
       <input type="text" id="goal-input" placeholder="Set a goal">
       <button id="add-goal-btn">Add Goal</button>
       <ul id="goal-list"></ul>
