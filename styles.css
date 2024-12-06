@@ -1,62 +1,207 @@
+/* Reset CSS */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f4;
-  }
-  
-  header {
-    background-color: #4CAF50;
-    color: white;
-    padding: 20px;
-    text-align: center;
-  }
-  
-  header nav ul {
-    list-style-type: none;
-    padding: 0;
-  }
-  
-  header nav ul li {
-    display: inline;
-    margin: 0 10px;
-  }
-  
+  font-family: 'Roboto', sans-serif;
+  background-color: #f0f2f5;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* Header Styling */
+header {
+  background-color: #0066cc;
+  color: #fff;
+  padding: 20px 0;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+header nav ul {
+  list-style-type: none;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+header nav ul li {
+  margin: 0;
+}
+
+header nav ul li a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.2rem;
+  padding: 10px 20px;
+  border-radius: 5px;
+  transition: background 0.3s ease;
+}
+
+header nav ul li a:hover {
+  background-color: #005bb5;
+}
+
+/* Main Section Styling */
+main {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 20px auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+section {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+section:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+section h2 {
+  font-size: 2rem;
+  margin-bottom: 15px;
+  color: #0066cc;
+}
+
+/* Task Section Specific Styling */
+#tasks {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#tasks ul {
+  list-style-type: none;
+  width: 100%;
+  padding: 0;
+}
+
+#tasks li {
+  background-color: #f9f9f9;
+  padding: 10px 15px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+}
+
+#task-input, #task-btn-container {
+  width: 100%;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+}
+
+#task-input {
+  padding: 14px;
+  font-size: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+button {
+  width: 100%;
+  padding: 15px;
+  background-color: #0066cc;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+button:hover {
+  background-color: #005bb5;
+}
+
+/* Other Sections */
+#notes, #weather, #goals {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch; /* Ensures all sections have equal width */
+}
+
+#notes ul, #goals ul {
+  list-style-type: none;
+  width: 100%;
+  padding: 0;
+}
+
+#notes li, #goals li {
+  background-color: #f9f9f9;
+  padding: 10px 15px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+}
+
+textarea, input[type="text"] {
+  width: 100%;
+  padding: 14px;
+  font-size: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-bottom: 15px;
+}
+
+textarea {
+  height: 100px;
+}
+
+#add-task-btn, #save-note-btn, #add-goal-btn {
+  width: 100%;
+  padding: 15px;
+  background-color: #0066cc;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+#add-task-btn:hover, #save-note-btn:hover, #add-goal-btn:hover {
+  background-color: #005bb5;
+}
+
+/* Responsive Design */
+@media screen and (min-width: 768px) {
   main {
-    padding: 20px;
+    flex-direction: row;
+    flex-wrap: wrap;
   }
-  
-  section {
-    margin-bottom: 30px;
+
+  main > section {
+    flex: 1 1 calc(50% - 40px);
+    margin: 10px;
   }
-  
-  input, textarea {
-    width: 100%;
-    padding: 10px;
-    margin-top: 10px;
+}
+
+@media screen and (min-width: 1200px) {
+  main > section {
+    flex: 1 1 calc(33.333% - 40px);
   }
-  
-  button {
-    padding: 10px 15px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    cursor: pointer;
+
+  header h1 {
+    font-size: 3rem;
   }
-  
-  button:hover {
-    background-color: #45a049;
-  }
-  
-  ul {
-    padding: 0;
-    list-style-type: none;
-  }
-  
-  li {
-    background-color: #fff;
-    padding: 10px;
-    margin-bottom: 5px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-  }
+}
