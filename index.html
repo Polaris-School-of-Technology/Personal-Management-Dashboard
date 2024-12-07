@@ -38,6 +38,18 @@
       <h2>Weather</h2>
       <div id="weather-info">
         <!-- Weather details will appear here -->
+
+        <label for="city">Enter your City</label>
+        <input type="text" placeholder="Enter City Name" id="City"> <!--Taking Input From The User For The City He/She Wants The Weather Data Of -->
+        <button id="weather-btn">Get Weather</button> <!-- Button To Get The Weather Data -->
+         <div id="weather-data">   <!-- Created the div to display the data coming from the API call-->
+          <p>Current Temperature: <span class="CurrentTemp"></span>°C</p>     <!--Displaying Current Temperature-->
+          <p>Feels Like: <span class="FeelsLike"></span>°C</p>    <!-- Displaying the Feels Like Temperature-->
+          <p>Maximum Temperature: <span class="MaxTemp"></span>°C</p>   <!-- Displaying the Maximum Temperature-->
+          <p>Minimum Temperature: <span class="MinTemp"></span>°C</p>   <!-- Displaying the Minimum Tempearture-->
+          <p>Humidity: <span class="Humidity"></span>%</p>    <!--Displaying the Humidity -->
+           <p>Wind Speed: <span class="WindSpeed"></span> km/h</p>  <!-- Displaying the Wind Speed-->
+         </div>
       </div>
     </section>
 
