@@ -38,15 +38,23 @@ document.getElementById('add-task-btn').addEventListener('click', function() {
 // On clicking the Weather Button , the function getWeather() will be called
 let weatherbtn = document.getElementById("weather-btn");
 weatherbtn.addEventListener("click",()=>{
-  fetchweather();
+  fetchWeather();
 })
  
 // Using asynchronous function to get the weather data from OpenWeatherMap API
-async function fetchweather() {
+// Asynchronous function is used so other tasks can be performed while waiting for the data to be fetched
+async function fetchWeather() {
   let city = document.getElementById('City').value; // Taking the City from the Input field
   let api = "50370eb305bcf8b13c21105c13583f30";  // API Id
   let apiURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${api}&units=metric`; // Created API url 
 
+
+ // Check if the city input is empty
+ if (city.trim() === "") {
+     document.getElementById("weather-data").innerHTML = "Please enter a city name.";
+     document.getElementById("weather-data").style.display = 'block';
+     return; // Exit the function if the input is empty
+ }
   // Using Try and Catch so even if there is an error in the API call, the code will not crash
   try {
     let response = await fetch(apiURL);  //Taking the response from the API, used await so the program  waits for the response
@@ -65,7 +73,9 @@ async function fetchweather() {
   } 
   // If errors occur in the API call, it will be caught and the error will be displayed in the HTML div
   catch (error) {
-    console.error("There is a problem with your fetch :",error); document.getElementById('weather-data').innerHTML = "Loading Failed";
+    console.error("There is a problem with your fetch :",error); document.getElementById('weather-data').innerHTML = `Loading Failed 
+    : ${error.message}`;
     document.getElementById('weather-data').style.display='block';
+    
   }
 }
