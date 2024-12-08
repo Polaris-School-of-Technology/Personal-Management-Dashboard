@@ -4,51 +4,64 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Personal Management Dashboard</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="task.css">
 </head>
-<body>
+<body class="mainWin">
   <header>
-    <h1>My Dashboard</h1>
+    <h1 style="text-align:center;
+    background: linear-gradient(to right,green,rgb(212, 88, 26),gold,rgb(67, 67, 174), red, yellow,rgb(182, 8, 188));
+    -webkit-background-clip: text;
+    color: transparent;">Personal Management Dashboard</h1>
     <nav>
       <ul>
-        <li><a href="#tasks">Tasks</a></li>
-        <li><a href="#notes">Notes</a></li>
-        <li><a href="#weather">Weather</a></li>
-        <li><a href="#goals">Goals</a></li>
+        <li><a href="#tasks" style="background-color: aqua;">Tasks</a></li>
+        <li><a href="#notes" style="background-color: aqua;">Notes</a></li>
+        <li><a href="#goals" style="background-color:  aqua;">Goals</a></li>
+        <li><a href="#weather" style="background-color: aqua;">Weather</a></li>
       </ul>
     </nav>
   </header>
 
   <main>
-    <section id="tasks">
+    <section id="tasks" class="section">
       <h2>Tasks</h2>
-      <ul id="task-list"></ul>
-      <input type="text" id="task-input" placeholder="New Task">
+      <input type="text" id="task-input" placeholder="Enter task">
+      <input type="date" id="task-date">
       <button id="add-task-btn">Add Task</button>
+      <ul id="task-list"></ul>
     </section>
 
-    <section id="notes">
+    <section id="notes" class="section">
       <h2>Notes</h2>
       <textarea id="note-input" placeholder="Write a note..."></textarea>
       <button id="save-note-btn">Save Note</button>
       <ul id="note-list"></ul>
     </section>
 
-    <section id="weather">
-      <h2>Weather</h2>
-      <div id="weather-info">
-        <!-- Weather details will appear here -->
-      </div>
-    </section>
-
-    <section id="goals">
+    <section id="goals" class="section">
       <h2>Goals</h2>
       <input type="text" id="goal-input" placeholder="Set a goal">
       <button id="add-goal-btn">Add Goal</button>
       <ul id="goal-list"></ul>
     </section>
+
+    <section id="weather" class="section">
+      <h2>Weather</h2>
+      <div id="weather-info">
+        
+      </div>
+    </section>
+
+    <div class="button-container">
+      <button onclick="window.location.href='./Wprofessional.html'">Working Professional</button>
+      <button onclick="window.location.href='./companyProject.html'">Project</button>
+      <button onclick="window.location.href='./Holidayplan.html'">Holiday Plan</button>
+      <button onclick="window.location.href='./student.html'">Student</button>
+      <button onclick="window.location.href='./BusinessGrowthDaily.html'">Business Growth</button>
+      <button onclick="window.location.href='./Futureplans.html'">Future Plans</button>
+    </div>
   </main>
 
-  <script src="script.js"></script>
+  <script src="task.js"></script>
 </body>
 </html>
