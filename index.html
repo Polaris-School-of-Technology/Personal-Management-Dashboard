@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Personal Management Dashboard</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>My Dashboard</h1>
+    <nav>
+      <ul>
+        <li><a href="#tasks">Tasks</a></li>
+        <li><a href="#notes">Notes</a></li>
+        <li><a href="#weather">Weather</a></li>
+        <li><a href="#goals">Goals</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section id="tasks">
+      <h2>Tasks</h2>
+      <ul id="task-list"></ul>
+      <input type="text" id="task-input" placeholder="New Task">
+      <button id="add-task-btn">Add Task</button>
+    </section>
+
+    <section id="notes">
+      <h2>Notes</h2>
+      <textarea id="note-input" placeholder="Write a note..."></textarea>
+      <button id="save-note-btn">Save Note</button>
+      <ul id="note-list"></ul>
+    </section>
+
+    <section id="weather">
+      <h2>Weather</h2>
+      <div id="weather-info">
+        <!-- Weather details will appear here -->
+      </div>
+    </section>
+
+    <section id="goals">
+      <h2>Goals</h2>
+      <input type="text" id="goal-input" placeholder="Set a goal">
+      <button id="add-goal-btn">Add Goal</button>
+      <ul id="goal-list"></ul>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
