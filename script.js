@@ -40,9 +40,12 @@ document.getElementById('save-date-btn').addEventListener('click', () => {
       const today = new Date();
       const goalDate = new Date(goalDateInput);
       
+      
       const timeDifference = goalDate - today;
 
+      
       const daysLeft = Math.ceil(timeDifference / (1000 * 60 * 60 * 24));
+      
       
       const day = String(goalDate.getDate()).padStart(2, '0');
       const month = String(goalDate.getMonth() + 1).padStart(2, '0');
@@ -50,10 +53,16 @@ document.getElementById('save-date-btn').addEventListener('click', () => {
       const formattedDate = `${day}-${month}-${year}`;
 
       
-      selectedDateDisplay.textContent = `Selected Date: ${formattedDate} (Days Left: ${daysLeft})`;
+      if (daysLeft < 0) {
+          selectedDateDisplay.textContent = `The selected date (${formattedDate}) has been passed.`;
+      } else {
+          
+          selectedDateDisplay.textContent = `Selected Date: ${formattedDate} (Days Left: ${daysLeft})`;
+      }
   } else {
       alert('Please select a date.');
   }
 });
+
 
 
