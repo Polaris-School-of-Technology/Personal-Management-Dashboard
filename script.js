@@ -76,6 +76,6 @@ async function fetchWeather() {
     console.error("There is a problem with your fetch :",error); document.getElementById('weather-data').innerHTML = `Loading Failed 
     : ${error.message}`;
     document.getElementById('weather-data').style.display='block';
-    
+            
   }
 }
