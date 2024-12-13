@@ -3,19 +3,50 @@ document.getElementById('add-task-btn').addEventListener('click', function() {
     const taskList = document.getElementById('task-list');
     if (taskInput.value.trim() !== "") {
       const newTask =document.createElement('li');
-      newTask.innerHTML = `
-      <span>${taskInput.value}</span>
-      <button class="editbtn">Edit</button>
-      <button class="deletebtn">Delete</button>
-    `;
-      deletebtn(newTask); 
-      editbtn(newTask); 
+      newTask.classList.add('task-item');
+      const checkbox = document.createElement('input');
+       checkbox.type = 'checkbox';
+        checkbox.classList.add('task-checkbox');
+         const taskText = document.createElement('span');
+          taskText.textContent = taskInput.value;
+    const editButton = document.createElement('button');
+    editButton.classList.add('editbtn');
+    editButton.textContent = 'Edit';
 
-      // newTask.textContent = taskInput.value;  not needed now
+    const deleteButton = document.createElement('button');
+    deleteButton.classList.add('deletebtn');
+    deleteButton.textContent = 'Delete';
+
+    newTask.appendChild(checkbox);
+    newTask.appendChild(taskText);
+    newTask.appendChild(editButton);
+    newTask.appendChild(deleteButton);
+    deletebtn(newTask); 
+    editbtn(newTask);
       taskList.appendChild(newTask);
       taskInput.value = '';
+      updateTaskSummary();
+        
+
     }
   });
+  function updateTaskSummary() {
+    const tasks = document.querySelectorAll('#task-list li');
+     const completedTasks = document.querySelectorAll('#task-list input:checked');
+      document.getElementById('task-summary').textContent =` ${tasks.length - completedTasks.length} tasks remaining, ${completedTasks.length} completed`;
+     }
+      document.getElementById('task-list').addEventListener('change', function(event) { 
+        if (event.target.tagName === 'INPUT' && event.target.type === 'checkbox') { 
+          if (event.target.checked) { 
+            event.target.parentNode.classList.add('completed');
+           } 
+           else { 
+            event.target.parentNode.classList.remove('completed'); 
+          } 
+          updateTaskSummary(); 
+        } 
+      }); 
+
   
   document.getElementById('save-note-btn').addEventListener('click', function() {
     const noteInput = document.getElementById('note-input');
@@ -94,4 +125,10 @@ document.getElementById('add-task-btn').addEventListener('click', function() {
       }
     });
   }
-  
+//   const toggleTheme = document.createElement('button');
+// toggleTheme.textContent = 'Toggle Dark Mode';
+// document.body.insertBefore(toggleTheme, document.body.firstChild);
+
+// toggleTheme.addEventListener('click', () => {
+//   document.body.classList.toggle('dark-mode');
+// });
