@@ -1,19 +1,82 @@
 
-  document.getElementById('add-task-btn').addEventListener('click', function() {
-    const taskInput = document.getElementById('task-input');
-    const taskList = document.getElementById('task-list');
-    
-    if (taskInput.value.trim() !== "") {
+document.getElementById('add-task-btn').addEventListener('click', function() {
+  const taskInput = document.getElementById('task-input');
+  const taskList = document.getElementById('task-list');
+
+  if (taskInput.value.trim() !== "") {
+      const taskText = taskInput.value;
       const newTask = document.createElement('li');
-      newTask.textContent = taskInput.value;
+      newTask.innerHTML = `
+          <span>${taskText}</span>
+          <input type="text" class="edit-input" style="display:none;">
+          <button class="edit-task-btn">Edit</button>
+      `;
       taskList.appendChild(newTask);
-  
-      const tasks = localStorage.getItem('tasks') ? localStorage.getItem('tasks') + ' | ' + taskInput.value : taskInput.value;
+
+      const tasks = localStorage.getItem('tasks') 
+          ? localStorage.getItem('tasks') + ' | ' + taskText 
+          : taskText;
       localStorage.setItem('tasks', tasks);
-  
-      taskInput.value = ''; 
-    }
-  });
+
+      taskInput.value = '';
+
+      newTask.querySelector('.edit-task-btn').addEventListener('click', function() {
+          toggleEditMode(newTask, taskText);
+      });
+  }
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+  const taskList = document.getElementById('task-list');
+
+  if (localStorage.getItem('tasks')) {
+      localStorage.getItem('tasks').split(' | ').forEach(task => {
+          const newTask = document.createElement('li');
+          newTask.innerHTML = `
+              <span>${task}</span>
+              <input type="text" class="edit-input" style="display:none;">
+              <button class="edit-task-btn">Edit</button>
+          `;
+          taskList.appendChild(newTask);
+
+          newTask.querySelector('.edit-task-btn').addEventListener('click', function() {
+              toggleEditMode(newTask, task);
+          });
+      });
+  }
+});
+
+function toggleEditMode(taskElement, oldTaskText) {
+  const span = taskElement.querySelector('span');
+  const editInput = taskElement.querySelector('.edit-input');
+  const editButton = taskElement.querySelector('.edit-task-btn');
+
+  if (editInput.style.display === 'none') {
+      editInput.style.display = 'inline-block';
+      editInput.value = span.textContent;
+      span.style.display = 'none';
+      editButton.textContent = 'Save';
+  } else {
+      const newTaskText = editInput.value;
+      if (newTaskText && newTaskText.trim() !== '') {
+          span.textContent = newTaskText;
+          span.style.display = 'inline';
+          editInput.style.display = 'none';
+          editButton.textContent = 'Edit';
+          updateLocalStorage(oldTaskText, newTaskText);
+      }
+  }
+}
+
+function updateLocalStorage(oldTaskText, newTaskText) {
+  let tasks = localStorage.getItem('tasks').split(' | ');
+  const taskIndex = tasks.indexOf(oldTaskText);
+
+  if (taskIndex !== -1) {
+      tasks[taskIndex] = newTaskText;
+      localStorage.setItem('tasks', tasks.join(' | '));
+  }
+}
   
   document.getElementById('save-note-btn').addEventListener('click', function() {
     const noteInput = document.getElementById('note-input');
