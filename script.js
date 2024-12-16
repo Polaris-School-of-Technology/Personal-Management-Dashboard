@@ -1,57 +1,99 @@
+const addedTasks = new Set();
+const addedNotes = new Set();
+const addedGoals = new Set()
+
 document.getElementById('add-task-btn').addEventListener('click', function() {
     const taskInput = document.getElementById('task-input');
+    const taskCategory = document.getElementById('task-category');
     const taskList = document.getElementById('task-list');
-    if (taskInput.value.trim() !== "") {
+
+    const taskText = taskInput.value.trim();
+    const taskWithCategory = `${taskText} (${taskCategory.value})`;
+  
+    if (isValidInput(taskText)) {
+      if(!addedTasks.has(taskWithCategory)) {
+        addedTasks.add(taskWithCategory); 
       const newTask =document.createElement('li');
       newTask.innerHTML = `
-      <span>${taskInput.value}</span>
+      <span>${taskWithCategory}</span>
+      <div style="display: inline-block;">
       <button class="editbtn">Edit</button>
       <button class="deletebtn">Delete</button>
+      </div>
     `;
-      deletebtn(newTask); 
-      editbtn(newTask); 
+      deletebtn(newTask , taskWithCategory, addedTasks); 
+      editbtn(newTask , taskWithCategory, addedTasks); 
 
       // newTask.textContent = taskInput.value;  not needed now
       taskList.appendChild(newTask);
       taskInput.value = '';
+    }else{
+      alert("You already added this task!");
     }
+  } else {
+    alert("Invalid input. Please enter a meaningful task.");
+  }
   });
   
   document.getElementById('save-note-btn').addEventListener('click', function() {
     const noteInput = document.getElementById('note-input');
     const noteList = document.getElementById('note-list');
-    if (noteInput.value.trim() !== "") {
+
+    const noteText=noteInput.value.trim();
+
+    if (isValidInput(noteText)) {
+      if(!addedNotes.has(noteText)) {
+        addedNotes.add(noteText);
       const newNote =document.createElement('li');
       newNote.innerHTML = `
-        <span>${noteInput.value}</span>
+        <span>${noteText}</span>
+        <div style="display: inline-block;">
         <button class="editbtn">Edit</button>
         <button class="deletebtn">Delete</button>
+        </div>
       `;
-      deletebtn(newNote); 
-      editbtn(newNote); 
+      deletebtn(newNote , noteText , addedNotes); 
+      editbtn(newNote , noteText , addedNotes); 
       // newNote.textContent = noteInput.value;   not needed now
       noteList.appendChild(newNote);
       noteInput.value = '';
+    }else {
+      alert("You already added this note!");
     }
+  } else {
+    alert("Invalid input. Please enter a meaningful note.");
+  }
   });
   
   document.getElementById('add-goal-btn').addEventListener('click', function() {
     const goalInput = document.getElementById('goal-input');
     const goalList = document.getElementById('goal-list');
-    if (goalInput.value.trim() !== "") {
+
+    const goalText = goalInput.value.trim();
+
+    if (isValidInput(goalText)) {
+      if(!addedGoals.has(goalText)) {
+        addedGoals.add(goalText);
       const newGoal =document.createElement('li');
       
-    newGoal.innerHTML = `
-      <span>${goalInput.value}</span>
+      newGoal.innerHTML = `
+      <span>${goalText}</span>
+      <div style="display: inline-block;">
       <button class="editbtn">Edit</button>
       <button class="deletebtn">Delete</button>
+      </div>
     `;
-    deletebtn(newGoal);
-    editbtn(newGoal);
+    deletebtn(newGoal , goalText , addedGoals);
+    editbtn(newGoal , goalText , addedGoals);
       // newGoal.textContent = goalInput.value;  not needed now
       goalList.appendChild(newGoal);
       goalInput.value = ''; 
+    }else {
+      alert("You already added this goal!");
     }
+  } else {
+    alert("Invalid input. Please enter a meaningful goal.");
+  }
   });
   
   document.getElementById('add-password-btn').addEventListener('click', function() {
@@ -60,37 +102,57 @@ document.getElementById('add-task-btn').addEventListener('click', function() {
     const passwordInput = document.getElementById('password-input');
     const passwordList = document.getElementById('password-list');
 
-    if (websiteInput.value.trim() !== "" && usernameInput.value.trim() !== "" && passwordInput.value.trim() !== "") {
+    const website = websiteInput.value.trim();
+    const username = usernameInput.value.trim();
+    const password = passwordInput.value.trim();
+
+    if (isValidInput(website) && isValidInput(username) && isValidInput(password)) {
       const newPasswordItem = document.createElement('li');
-      newPasswordItem.textContent = `Website: ${websiteInput.value}, Username: ${usernameInput.value}, Password: ${passwordInput.value}`;
+      newPasswordItem.textContent = `Website: ${website}, Username: ${username}, Password: ${password}`;
       passwordList.appendChild(newPasswordItem);
       
       websiteInput.value = '';
       usernameInput.value = '';
       passwordInput.value = '';
+    }else {
+      alert("Invalid input. Please ensure all fields are filled with meaningful data.");
     }
   });
+
+  function isValidInput(input) {
+    const invalidPatterns = [/^\s*$/, /[^a-zA-Z0-9 ]/]; 
+    return !invalidPatterns.some((pattern) => pattern.test(input));
+  } 
+
 
   // You can later add functionality for fetching weather from an API, etc.
    
   // delete button functionality
-  function deletebtn(element) {
+  function deletebtn(element , value , set) {
     const deleteBtn =element.querySelector('.deletebtn');
     deleteBtn.addEventListener('click', function () {
       if (confirm("Are you sure you want to delete this item?")) {
+        set.delete(value);
         element.remove();
       }
     });
   }
   
   // edit button functionality
-  function editbtn(element) {
+  function editbtn(element , value , set) {
     const editBtn =element.querySelector('.editbtn');
     editBtn.addEventListener('click', function () {
-      const textSpan =element.querySelector('span:nth-child(2)') || element.querySelector('span');
-      const editedText =prompt("Edit your item:", textSpan.textContent);
+      const textSpan =element.querySelector('span');
+      const editedText =prompt("Edit your item:", textSpan.textContent.split("(")[0])
       if (editedText !==null&&editedText.trim() !== "") {
-        textSpan.textContent =editedText;
+        const newFormattedValue  =editedText.trim();
+        if(!set.has(newFormattedValue)){
+          set.delete(value);
+          set.add(newFormattedValue);
+          textSpan.textContent = `${newFormattedValue} (${element.querySelector('span').textContent.split("(")[1]})`;
+        } else{
+          alert("This edited item already exists!");
+        }
       }
     });
   }
