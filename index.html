@@ -25,8 +25,11 @@
   <main>
     <section id="tasks">
       <h2>Tasks</h2>
+      <div id="task-summary">0 tasks remaining, 0completed</div>
+      <div id = "task-input-container">
       <input type="text" id="task-input" placeholder="New Task">
       <button id="add-task-btn">Add Task</button>
+      </div>
       <ul id="task-list"></ul>
     </section>
 
@@ -57,7 +60,7 @@
       <input type="text" id="username-input" placeholder="Username">
       <div style="position: relative;">
         <input type="password" id="password-input" placeholder="Password">
-       <i class="fa fa-eye" data-toggle-password style="position: absolute; right: 10px; top: 20px; cursor: pointer;"></i>
+       <i class="fa fa-eye" data-toggle-password style="position: absolute; left: 150px; top: 12px; cursor: pointer;"></i>
       </div>
       <button id="add-password-btn">Add Password</button>
       <ul id="password-list"></ul>

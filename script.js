@@ -3,19 +3,45 @@ document.getElementById('add-task-btn').addEventListener('click', function() {
     const taskList = document.getElementById('task-list');
     if (taskInput.value.trim() !== "") {
       const newTask =document.createElement('li');
-      newTask.innerHTML = `
-      <span>${taskInput.value}</span>
-      <button class="editbtn">Edit</button>
-      <button class="deletebtn">Delete</button>
-    `;
-      deletebtn(newTask); 
-      editbtn(newTask); 
-
-      // newTask.textContent = taskInput.value;  not needed now
-      taskList.appendChild(newTask);
-      taskInput.value = '';
+      newTask.classList.add('task-item');
+const checkbox= document.createElement('input');
+  checkbox.type = 'checkbox';
+  checkbox.classList.add('task-checkbox');
+const taskText= document.createElement('span');
+  taskText.textContent = taskInput.value;
+  const editButton = document.createElement('button');
+  editButton.classList.add('editbtn');
+  editButton.textContent = 'Edit';
+const deleteButton = document.createElement('button');
+  deleteButton.classList.add('deletebtn');
+  deleteButton.textContent = 'Delete';
+  newTask.appendChild(checkbox);
+  newTask.appendChild(taskText);
+  newTask.appendChild(editButton);
+  newTask.appendChild(deleteButton);  
+    deletebtn(newTask); 
+    editbtn(newTask); 
+    taskList.appendChild(newTask);
+    taskInput.value = '';
+    updateTaskSummary();
     }
   });
+  function updateTaskSummary() {
+    const tasks = document.querySelectorAll('#task-list li');
+    const completedTasks = document.querySelectorAll('#task-list input:checked');
+    document.getElementById('task-summary').textContent =` ${tasks.length - completedTasks.length} tasks remaining, ${completedTasks.length} completed`;
+    }
+    document.getElementById('task-list').addEventListener('change', function(event) { 
+      if (event.target.tagName === 'INPUT' && event.target.type === 'checkbox') { 
+        if (event.target.checked) { 
+          event.target.parentNode.classList.add('completed');
+         } 
+         else { 
+          event.target.parentNode.classList.remove('completed'); 
+        } 
+        updateTaskSummary(); 
+      } 
+    }); 
   
   document.getElementById('save-note-btn').addEventListener('click', function() {
     const noteInput = document.getElementById('note-input');
@@ -25,8 +51,7 @@ document.getElementById('add-task-btn').addEventListener('click', function() {
       newNote.innerHTML = `
         <span>${noteInput.value}</span>
         <button class="editbtn">Edit</button>
-        <button class="deletebtn">Delete</button>
-      `;
+        <button class="deletebtn">Delete</button>`;
       deletebtn(newNote); 
       editbtn(newNote); 
       // newNote.textContent = noteInput.value;   not needed now
@@ -44,8 +69,7 @@ document.getElementById('add-task-btn').addEventListener('click', function() {
     newGoal.innerHTML = `
       <span>${goalInput.value}</span>
       <button class="editbtn">Edit</button>
-      <button class="deletebtn">Delete</button>
-    `;
+      <button class="deletebtn">Delete</button>`;
     deletebtn(newGoal);
     editbtn(newGoal);
       // newGoal.textContent = goalInput.value;  not needed now
@@ -64,15 +88,11 @@ document.getElementById('add-task-btn').addEventListener('click', function() {
       const newPasswordItem = document.createElement('li');
       newPasswordItem.textContent = `Website: ${websiteInput.value}, Username: ${usernameInput.value}, Password: ${passwordInput.value}`;
       passwordList.appendChild(newPasswordItem);
-      
       websiteInput.value = '';
       usernameInput.value = '';
       passwordInput.value = '';
     }
   });
-
-  // You can later add functionality for fetching weather from an API, etc.
-   
   // delete button functionality
   function deletebtn(element) {
     const deleteBtn =element.querySelector('.deletebtn');
@@ -82,7 +102,6 @@ document.getElementById('add-task-btn').addEventListener('click', function() {
       }
     });
   }
-  
   // edit button functionality
   function editbtn(element) {
     const editBtn =element.querySelector('.editbtn');
