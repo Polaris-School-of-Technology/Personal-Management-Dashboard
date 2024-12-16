@@ -1,6 +1,7 @@
 document.getElementById('add-task-btn').addEventListener('click', function() {
     const taskInput = document.getElementById('task-input');
     const taskList = document.getElementById('task-list');
+    const taskError = document.getElementById('task-error');
     if (taskInput.value.trim() !== "") {
       const newTask =document.createElement('li');
       newTask.innerHTML = `
@@ -14,12 +15,17 @@ document.getElementById('add-task-btn').addEventListener('click', function() {
       // newTask.textContent = taskInput.value;  not needed now
       taskList.appendChild(newTask);
       taskInput.value = '';
+      taskError.style.display = 'none'; // Hide error message
+    }else {
+      taskError.textContent = "Task input cannot be empty!";
+      taskError.style.display = 'block';
     }
   });
   
   document.getElementById('save-note-btn').addEventListener('click', function() {
     const noteInput = document.getElementById('note-input');
     const noteList = document.getElementById('note-list');
+    const noteError = document.getElementById('note-error');
     if (noteInput.value.trim() !== "") {
       const newNote =document.createElement('li');
       newNote.innerHTML = `
@@ -32,12 +38,17 @@ document.getElementById('add-task-btn').addEventListener('click', function() {
       // newNote.textContent = noteInput.value;   not needed now
       noteList.appendChild(newNote);
       noteInput.value = '';
+      noteError.style.display = 'none'; // Hide error message
+    }else{
+      noteError.textContent = "Note input cannot be empty!";
+      noteError.style.display = 'block';
     }
   });
   
   document.getElementById('add-goal-btn').addEventListener('click', function() {
     const goalInput = document.getElementById('goal-input');
     const goalList = document.getElementById('goal-list');
+    const goalError = document.getElementById('goal-error');
     if (goalInput.value.trim() !== "") {
       const newGoal =document.createElement('li');
       
@@ -51,6 +62,10 @@ document.getElementById('add-task-btn').addEventListener('click', function() {
       // newGoal.textContent = goalInput.value;  not needed now
       goalList.appendChild(newGoal);
       goalInput.value = ''; 
+      goalError.style.display = 'none'; // Hide error message
+    }else{
+      goalError.textContent = "Goal input cannot be empty!";
+      goalError.style.display = 'block';
     }
   });
   
@@ -59,6 +74,7 @@ document.getElementById('add-task-btn').addEventListener('click', function() {
     const usernameInput = document.getElementById('username-input');
     const passwordInput = document.getElementById('password-input');
     const passwordList = document.getElementById('password-list');
+    const passwordError = document.getElementById('password-error');
 
     if (websiteInput.value.trim() !== "" && usernameInput.value.trim() !== "" && passwordInput.value.trim() !== "") {
       const newPasswordItem = document.createElement('li');
@@ -68,6 +84,10 @@ document.getElementById('add-task-btn').addEventListener('click', function() {
       websiteInput.value = '';
       usernameInput.value = '';
       passwordInput.value = '';
+      passwordError.style.display = 'none';
+    }else{
+      passwordError.textContent = "All fields must be filled!";
+      passwordError.style.display = 'block';
     }
   });
 
