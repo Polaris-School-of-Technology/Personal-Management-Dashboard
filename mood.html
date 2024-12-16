@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mood Tracker</title>
+    <link rel="stylesheet" href="moodstyle.css">
+</head>
+<body>
+    <div class="calendar-container">
+        <h1>TRACK YOUR MOOD!</h1>
+        <p>Are you very happy? Choose 😃</p><br>
+      <p>Are you happy? Choose ☺️</p><br> 
+      <p>Are you feeling just fine? Choose 😑</p><br>
+      <p>Are you very sad? Choose 😒</p><br>
+      <p>Are you very sad? Choose 😭</p>
+        <div id="calendar"></div>
+        <div id="mood-picker" class="hidden">
+          <p>Select your mood:</p>
+          <div class="emojis">
+            <span class="emoji" data-mood="😃">😃</span>
+            <span class="emoji" data-mood="☺️">☺️</span>
+            <span class="emoji" data-mood="😑">😑</span>
+            <span class="emoji" data-mood="😒">😒</span>
+            <span class="emoji" data-mood="😭">😭</span>
+          </div>
+        </div>
+      </div>
+      <script src="moodcal.js"></script>
+</body>
+</html>
