@@ -2,11 +2,11 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
+    background-color: var(--primary-color);
   }
   
   header {
-    background-color: #4CAF50;
+    background-color:var(--secondary-color);
     color: white;
     padding: 20px;
     text-align: center;
@@ -70,14 +70,14 @@ body {
   
   button {
     padding: 10px 15px;
-    background-color: #4CAF50;
+    background-color: var(--secondary-color);
     color: white;
     border: none;
     cursor: pointer;
   }
   
   button:hover {
-    background-color: #45a049;
+   transition: scale(1.2);
   }
   
   ul {
@@ -91,4 +91,5 @@ body {
     margin-bottom: 5px;
     border: 1px solid #ddd;
     border-radius: 5px;
+
   }
