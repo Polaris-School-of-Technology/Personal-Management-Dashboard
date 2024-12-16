@@ -37,19 +37,14 @@ function addTask(inputId, listId) {
   if (task) {
     const list = document.getElementById(listId);
     const listItem = document.createElement('li');
-    listItem.innerText = task;
-
-    const deleteBtn = document.createElement('button');
-    deleteBtn.innerText = 'Delete';
-    deleteBtn.classList.add('deletebtn');
-    deleteBtn.addEventListener('click', () => {
-      listItem.remove();
-      saveTasks();  // Save tasks after removal
-    });
-
-    listItem.appendChild(deleteBtn);
+    listItem.innerHTML = `
+      <span>${task}</span>
+      <button class="editbtn">Edit</button>
+      <button class="deletebtn">Delete</button>
+    `;
+    deletebtn(listItem);
+    editbtn(listItem);
     list.appendChild(listItem);
-
     saveTasks();  // Save tasks after adding new task
     input.value = '';
   }
@@ -62,19 +57,14 @@ function addGoal(inputId, listId) {
   if (goal) {
     const list = document.getElementById(listId);
     const listItem = document.createElement('li');
-    listItem.innerText = goal;
-
-    const deleteBtn = document.createElement('button');
-    deleteBtn.innerText = 'Delete';
-    deleteBtn.classList.add('deletebtn');
-    deleteBtn.addEventListener('click', () => {
-      listItem.remove();
-      saveGoals();  // Save goals after removal
-    });
-
-    listItem.appendChild(deleteBtn);
+    listItem.innerHTML = `
+      <span>${goal}</span>
+      <button class="editbtn">Edit</button>
+      <button class="deletebtn">Delete</button>
+    `;
+    deletebtn(listItem);
+    editbtn(listItem);
     list.appendChild(listItem);
-
     saveGoals();  // Save goals after adding new goal
     input.value = '';
   }
@@ -87,16 +77,14 @@ function saveNote() {
   if (note) {
     const list = document.getElementById('note-list');
     const listItem = document.createElement('li');
-    listItem.innerText = note;
-
-    const deleteBtn = document.createElement('button');
-    deleteBtn.innerText = 'Delete';
-    deleteBtn.classList.add('deletebtn');
-    deleteBtn.addEventListener('click', () => listItem.remove());
-
-    listItem.appendChild(deleteBtn);
+    listItem.innerHTML = `
+      <span>${note}</span>
+      <button class="editbtn">Edit</button>
+      <button class="deletebtn">Delete</button>
+    `;
+    deletebtn(listItem);
+    editbtn(listItem);
     list.appendChild(listItem);
-
     input.value = '';
   }
 }
@@ -125,6 +113,45 @@ function addPassword() {
     document.getElementById('password-input').value = '';
   }
 }
+
+// delete button functionality
+function deletebtn(element) {
+  const deleteBtn = element.querySelector('.deletebtn');
+  deleteBtn.addEventListener('click', function () {
+    if (confirm("Are you sure you want to delete this item?")) {
+      element.remove();
+      saveTasks();
+      saveGoals();
+    }
+  });
+}
+
+// edit button functionality
+function editbtn(element) {
+  const editBtn = element.querySelector('.editbtn');
+  editBtn.addEventListener('click', function () {
+    const textSpan = element.querySelector('span:nth-child(2)') || element.querySelector('span');
+    const editedText = prompt("Edit your item:", textSpan.textContent);
+    if (editedText !== null && editedText.trim() !== "") {
+      textSpan.textContent = editedText;
+    }
+  });
+}
+
+// Toggle password visibility
+const passwordInput = document.getElementById('password-input');
+const togglePasswordVisibilityIcon = document.querySelector('[data-toggle-password]');
+togglePasswordVisibilityIcon.addEventListener('click', function () {
+  if (passwordInput.type === 'password') {
+    passwordInput.type = 'text';
+    togglePasswordVisibilityIcon.classList.remove('fa-eye');
+    togglePasswordVisibilityIcon.classList.add('fa-eye-slash');
+  } else {
+    passwordInput.type = 'password';
+    togglePasswordVisibilityIcon.classList.remove('fa-eye-slash');
+    togglePasswordVisibilityIcon.classList.add('fa-eye');
+  }
+});
 
 // Save tasks to localStorage
 function saveTasks() {
@@ -168,16 +195,13 @@ function loadTasks() {
   tasks.yearly.forEach(task => addTaskToList('yearly-task-list', task));
 }
 
-
 function loadGoals() {
   const goals = JSON.parse(localStorage.getItem('goals')) || { weekly: [], monthly: [], yearly: [] };
-
 
   goals.weekly.forEach(goal => addGoalToList('weekly-goal-list', goal));
   goals.monthly.forEach(goal => addGoalToList('monthly-goal-list', goal));
   goals.yearly.forEach(goal => addGoalToList('yearly-goal-list', goal));
 }
-
 
 function addTaskToList(listId, task) {
   const list = document.getElementById(listId);
