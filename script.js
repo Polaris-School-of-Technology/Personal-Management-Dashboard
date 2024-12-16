@@ -116,5 +116,4 @@
         goalList.appendChild(listItem);
       });
     }
-  });
-  
+  });  
