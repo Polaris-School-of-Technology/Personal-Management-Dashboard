@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Personal Management Dashboard</title>
   <link rel="stylesheet" href="styles.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 </head>
 <body>
   <header>
@@ -15,6 +16,8 @@
         <li><a href="#notes">Notes</a></li>
         <li><a href="#weather">Weather</a></li>
         <li><a href="#goals">Goals</a></li>
+        <li><a href="#passwords">Passwords</a></li>
+        <li><a><button id='darkBtn'>Dark Mode</a></li>
       </ul>
     </nav>
   </header>
@@ -22,9 +25,9 @@
   <main>
     <section id="tasks">
       <h2>Tasks</h2>
-      <ul id="task-list"></ul>
       <input type="text" id="task-input" placeholder="New Task">
       <button id="add-task-btn">Add Task</button>
+      <ul id="task-list"></ul>
     </section>
 
     <section id="notes">
@@ -46,6 +49,18 @@
       <input type="text" id="goal-input" placeholder="Set a goal">
       <button id="add-goal-btn">Add Goal</button>
       <ul id="goal-list"></ul>
+    </section>
+
+    <section id="passwords">
+      <h2>Passwords</h2>
+      <input type="text" id="website-input" placeholder="Website">
+      <input type="text" id="username-input" placeholder="Username">
+      <div style="position: relative;">
+        <input type="password" id="password-input" placeholder="Password">
+       <i class="fa fa-eye" data-toggle-password style="position: absolute; right: 10px; top: 20px; cursor: pointer;"></i>
+      </div>
+      <button id="add-password-btn">Add Password</button>
+      <ul id="password-list"></ul>
     </section>
   </main>
 
