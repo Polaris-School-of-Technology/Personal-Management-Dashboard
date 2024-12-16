@@ -2,10 +2,13 @@ document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('add-task-btn').addEventListener('click', () => addTask('task-input', 'task-list'));
   document.getElementById('save-note-btn').addEventListener('click', saveNote);
   document.getElementById('add-password-btn').addEventListener('click', addPassword);
-  
-  // Initialize dropdowns
+
   showTaskInput();
   showGoalInput();
+
+  
+  loadTasks();
+  loadGoals();
 });
 
 function showTaskInput() {
@@ -35,10 +38,15 @@ function addTask(inputId, listId) {
       const deleteBtn = document.createElement('button');
       deleteBtn.innerText = 'Delete';
       deleteBtn.classList.add('deletebtn');
-      deleteBtn.addEventListener('click', () => listItem.remove());
+      deleteBtn.addEventListener('click', () => {
+          listItem.remove();
+          saveTasks();
+      });
 
       listItem.appendChild(deleteBtn);
       list.appendChild(listItem);
+
+      saveTasks();
 
       input.value = '';
   }
@@ -75,10 +83,15 @@ function addGoal(inputId, listId) {
       const deleteBtn = document.createElement('button');
       deleteBtn.innerText = 'Delete';
       deleteBtn.classList.add('deletebtn');
-      deleteBtn.addEventListener('click', () => listItem.remove());
+      deleteBtn.addEventListener('click', () => {
+          listItem.remove();
+          saveGoals();
+      });
 
       listItem.appendChild(deleteBtn);
       list.appendChild(listItem);
+
+      saveGoals();
 
       input.value = '';
   }
@@ -105,4 +118,66 @@ function addPassword() {
       document.getElementById('username-input').value = '';
       document.getElementById('password-input').value = '';
   }
+}
+
+
+function saveTasks() {
+  const tasks = [];
+  const taskList = document.getElementById('task-list');
+  taskList.querySelectorAll('li').forEach((item) => {
+      tasks.push(item.innerText.replace('Delete', '').trim());
+  });
+  localStorage.setItem('tasks', JSON.stringify(tasks));
+}
+
+
+function loadTasks() {
+  const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+  const taskList = document.getElementById('task-list');
+  tasks.forEach((task) => {
+      const listItem = document.createElement('li');
+      listItem.innerText = task;
+
+      const deleteBtn = document.createElement('button');
+      deleteBtn.innerText = 'Delete';
+      deleteBtn.classList.add('deletebtn');
+      deleteBtn.addEventListener('click', () => {
+          listItem.remove();
+          saveTasks();
+      });
+
+      listItem.appendChild(deleteBtn);
+      taskList.appendChild(listItem);
+  });
+}
+
+
+function saveGoals() {
+  const goals = [];
+  const goalList = document.getElementById('goal-list');
+  goalList.querySelectorAll('li').forEach((item) => {
+      goals.push(item.innerText.replace('Delete', '').trim());
+  });
+  localStorage.setItem('goals', JSON.stringify(goals));
+}
+
+
+function loadGoals() {
+  const goals = JSON.parse(localStorage.getItem('goals')) || [];
+  const goalList = document.getElementById('goal-list');
+  goals.forEach((goal) => {
+      const listItem = document.createElement('li');
+      listItem.innerText = goal;
+
+      const deleteBtn = document.createElement('button');
+      deleteBtn.innerText = 'Delete';
+      deleteBtn.classList.add('deletebtn');
+      deleteBtn.addEventListener('click', () => {
+          listItem.remove();
+          saveGoals();
+      });
+
+      listItem.appendChild(deleteBtn);
+      goalList.appendChild(listItem);
+  });
 }
