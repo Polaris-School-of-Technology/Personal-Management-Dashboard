@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Personal Management Dashboard</title>
   <link rel="stylesheet" href="styles.css">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 </head>
 <body>
   <header>
@@ -23,10 +22,29 @@
 
   <main>
     <section id="tasks">
-      <h2>Tasks</h2>
-      <input type="text" id="task-input" placeholder="New Task">
-      <button id="add-task-btn">Add Task</button>
-      <ul id="task-list"></ul>
+      <div class="header-with-select">
+        <h2>Tasks</h2>
+        <select id="task-type" onchange="showTaskInput()" class="short-select">
+          <option value="weekly">Weekly</option>
+          <option value="monthly">Monthly</option>
+          <option value="yearly">Yearly</option>
+        </select>
+      </div>
+      <div id="weekly-task" class="task-category">
+        <input type="text" id="weekly-task-input" placeholder="New Weekly Task">
+        <button onclick="addTask('weekly-task-input', 'weekly-task-list')">Add Task</button>
+        <ul id="weekly-task-list"></ul>
+      </div>
+      <div id="monthly-task" class="task-category" style="display:none;">
+        <input type="text" id="monthly-task-input" placeholder="New Monthly Task">
+        <button onclick="addTask('monthly-task-input', 'monthly-task-list')">Add Task</button>
+        <ul id="monthly-task-list"></ul>
+      </div>
+      <div id="yearly-task" class="task-category" style="display:none;">
+        <input type="text" id="yearly-task-input" placeholder="New Yearly Task">
+        <button onclick="addTask('yearly-task-input', 'yearly-task-list')">Add Task</button>
+        <ul id="yearly-task-list"></ul>
+      </div>
     </section>
 
     <section id="notes">
@@ -44,20 +62,36 @@
     </section>
 
     <section id="goals">
-      <h2>Goals</h2>
-      <input type="text" id="goal-input" placeholder="Set a goal">
-      <button id="add-goal-btn">Add Goal</button>
-      <ul id="goal-list"></ul>
+      <div class="header-with-select">
+        <h2>Goals</h2>
+        <select id="goal-type" onchange="showGoalInput()" class="short-select">
+          <option value="weekly">Weekly</option>
+          <option value="monthly">Monthly</option>
+          <option value="yearly">Yearly</option>
+        </select>
+      </div>
+      <div id="weekly-goal" class="goal-category">
+        <input type="text" id="weekly-goal-input" placeholder="New Weekly Goal">
+        <button onclick="addGoal('weekly-goal-input', 'weekly-goal-list')">Add Goal</button>
+        <ul id="weekly-goal-list"></ul>
+      </div>
+      <div id="monthly-goal" class="goal-category" style="display:none;">
+        <input type="text" id="monthly-goal-input" placeholder="New Monthly Goal">
+        <button onclick="addGoal('monthly-goal-input', 'monthly-goal-list')">Add Goal</button>
+        <ul id="monthly-goal-list"></ul>
+      </div>
+      <div id="yearly-goal" class="goal-category" style="display:none;">
+        <input type="text" id="yearly-goal-input" placeholder="New Yearly Goal">
+        <button onclick="addGoal('yearly-goal-input', 'yearly-goal-list')">Add Goal</button>
+        <ul id="yearly-goal-list"></ul>
+      </div>
     </section>
 
     <section id="passwords">
       <h2>Passwords</h2>
       <input type="text" id="website-input" placeholder="Website">
       <input type="text" id="username-input" placeholder="Username">
-      <div style="position: relative;">
-        <input type="password" id="password-input" placeholder="Password">
-       <i class="fa fa-eye" data-toggle-password style="position: absolute; right: 10px; top: 20px; cursor: pointer;"></i>
-      </div>
+      <input type="password" id="password-input" placeholder="Password">
       <button id="add-password-btn">Add Password</button>
       <ul id="password-list"></ul>
     </section>
