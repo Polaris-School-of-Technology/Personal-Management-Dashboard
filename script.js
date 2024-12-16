@@ -114,4 +114,17 @@ document.getElementById('add-task-btn').addEventListener('click', function() {
       }
     });
   }
-  
+
+const passwordInput = document.getElementById('password-input');
+const togglePasswordVisibilityIcon = document.querySelector('[data-toggle-password]');
+togglePasswordVisibilityIcon.addEventListener('click', function () {
+  if (passwordInput.type === 'password') {
+    passwordInput.type = 'text';
+    togglePasswordVisibilityIcon.classList.remove('fa-eye');
+    togglePasswordVisibilityIcon.classList.add('fa-eye-slash');
+  } else {
+    passwordInput.type = 'password';
+    togglePasswordVisibilityIcon.classList.remove('fa-eye-slash');
+    togglePasswordVisibilityIcon.classList.add('fa-eye');
+  }
+});
