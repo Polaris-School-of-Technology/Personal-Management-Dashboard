@@ -1,38 +1,3 @@
-// document.getElementById('add-task-btn').addEventListener('click', function() {
-//     const taskInput = document.getElementById('task-input');
-//     const taskList = document.getElementById('task-list');
-//     if (taskInput.value.trim() !== "") {
-//       const newTask = document.createElement('li');
-//       newTask.textContent = taskInput.value;
-//       taskList.appendChild(newTask);
-//       taskInput.value = '';
-//     }
-//   });
-  
-//   document.getElementById('save-note-btn').addEventListener('click', function() {
-//     const noteInput = document.getElementById('note-input');
-//     const noteList = document.getElementById('note-list');
-//     if (noteInput.value.trim() !== "") {
-//       const newNote = document.createElement('li');
-//       newNote.textContent = noteInput.value;
-//       noteList.appendChild(newNote);
-//       noteInput.value = '';
-//     }
-//   });
-  
-//   document.getElementById('add-goal-btn').addEventListener('click', function() {
-//     const goalInput = document.getElementById('goal-input');
-//     const goalList = document.getElementById('goal-list');
-//     if (goalInput.value.trim() !== "") {
-//       const newGoal = document.createElement('li');
-//       newGoal.textContent = goalInput.value;
-//       goalList.appendChild(newGoal);
-//       goalInput.value = ''; 
-//     }
-//   });
-
-  // You can later add functionality for fetching weather from an API, etc.
-  
 
   document.getElementById('add-task-btn').addEventListener('click', function() {
     const taskInput = document.getElementById('task-input');
@@ -117,3 +82,35 @@
       });
     }
   });  
+
+
+  document.getElementById('clear-all-notes-btn').addEventListener('click', function() {
+    if (confirm('Are you sure you want to delete all notes?')) {
+      localStorage.removeItem('notes');
+      document.getElementById('note-list').innerHTML = '';
+    }
+  });
+
+  document.getElementById('save-note-btn').addEventListener('click', function() {
+    const noteInput = document.getElementById('note-input').value;
+    if (noteInput) {
+      let notes = JSON.parse(localStorage.getItem('notes')) || [];
+      notes.push(noteInput);
+      localStorage.setItem('notes', JSON.stringify(notes));
+      displayNotes();
+    }
+  });
+
+  function displayNotes() {
+    const notes = JSON.parse(localStorage.getItem('notes')) || [];
+    const noteList = document.getElementById('note-list');
+    noteList.innerHTML = '';
+    notes.forEach(note => {
+      const li = document.createElement('li');
+      li.textContent = note;
+      noteList.appendChild(li);
+    });
+  }
+  
+  displayNotes();
+  
