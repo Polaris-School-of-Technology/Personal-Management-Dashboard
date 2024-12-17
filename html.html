@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Registration & Login</title>
+   <link rel="stylesheet" href="first.css">
+   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+   <div id="container">
+      <div id="icon">
+         <a href="index.html" id="home-icon" title="Go to Login">
+           <i class="fas fa-home"></i>
+         </a>
+         </div>
+      
+      <div id="signup">
+         <h1>Sign Up</h1>
+         <form id="signInput">
+            <input type="text" id="firstName" placeholder="First Name" required>
+            <input type="text" id="lastName" placeholder="Last Name" required>
+            <input type="email" id="email" placeholder="Email" required>
+            <input type="password" id="password" placeholder="Password" required>
+            <button id="signupbtn">Sign Up</button>
+            <p>Already a user? <a id="login_btn" href="#">Login</a></p>
+         </form>
+      </div>
+
+      
+      <div id="login" style="display: none;">
+         <h1>Login</h1>
+         <form>
+            <input type="email" id="email_login" placeholder="Email" required>
+            <input type="password" id="password_login" placeholder="Password" required>
+            <button id="loginbtn">Login</button>
+            <p>Create an account? <a href="#" id="signup_btn" target="_blank">Sign Up</a></p>
+         </form>
+      </div>
+   </div>
+   <script src="first.js"></script>
+</body>
+</html>
