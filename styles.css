@@ -35,6 +35,38 @@ body {
     padding: 10px;
     margin-top: 10px;
   }
+
+  #task-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+#task-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+}
+
+#task-list li button.edit-task-btn {
+    margin-left: 10px;
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 6px;
+}
+
+#task-list li button.edit-task-btn:hover {
+    background-color: #45a049;
+}
+
   
   button {
     padding: 10px 15px;
@@ -59,50 +91,5 @@ body {
     margin-bottom: 5px;
     border: 1px solid #ddd;
     border-radius: 5px;
-   
+
   }
-
-
-button.editbtn {
-  background-color: #4caf50;
-  color: white;
-  float: right;
-  padding: 5px 10px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-button.deletebtn {
-  background-color: #f44336;
-  color: white;
-  float: right;
-  margin-right: 10px;
-  padding: 5px 10px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-:root{
-  --primary-color:white;
-  --secondary-color:#4caf50;
-  --tertiary-color:black;
-}
-.darkTheme{
-  --primary-color:black;
-  --secondary-color:grey;
-  --tertiary-color:white;
-}
-h2{
-  color:var(--tertiary-color)
-}
-
-#darkBtn{
-  background-color: #fff;
-  color:rgb(86, 66, 164);
-  text-decoration: underline;
-  font-family: Arial, sans-serif;
-  font-weight: bold;
-
-}
-
