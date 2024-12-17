@@ -117,3 +117,29 @@ darkBtn.onclick=function(){
     darkBtn.textContent = 'Dark Mode';
 }
 }
+document.addEventListener("DOMContentLoaded", () => {
+  const taskInput = document.getElementById("task-input");
+  const taskDateInput = document.getElementById("task-date");
+  const addTaskBtn = document.getElementById("add-task-btn");
+  const taskList = document.getElementById("task-list");
+  addTaskBtn.addEventListener("click", () => {
+    const taskText = taskInput.value.trim();
+    const taskDueDate = taskDateInput.value;
+    if (taskText) {
+      const taskItem = document.createElement("li");
+      taskItem.innerHTML = `
+        <span>${taskText}</span> 
+        ${taskDueDate ? ` - <em>Due: ${taskDueDate}</em>` : ""}
+        <button class="delete-btn">Delete</button>
+      `;
+      taskItem.querySelector(".delete-btn").addEventListener("click", () => {
+        taskItem.remove();
+      });  
+      taskList.appendChild(taskItem);
+      taskInput.value = "";
+      taskDateInput.value = "";
+    } else {
+      alert("Please enter a task!");
+    }
+  });
+});
