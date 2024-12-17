@@ -59,8 +59,15 @@ body {
     margin-bottom: 5px;
     border: 1px solid #ddd;
     border-radius: 5px;
-   
   }
+  
+  
+  #weather-data{
+    display: none;  /*Making the Weather-data div initially Hidden */
+  }
+
+   
+  
 
 
 button.editbtn {
