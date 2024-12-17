@@ -163,4 +163,5 @@ darkBtn.onclick=function(){
   } else {
     darkBtn.textContent = 'Dark Mode';
     }
-}
+  }
+};
