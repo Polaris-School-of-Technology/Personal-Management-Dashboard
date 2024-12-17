@@ -236,3 +236,11 @@ function addGoalToList(listId, goal) {
   listItem.appendChild(deleteBtn);
   list.appendChild(listItem);
 }
+darkBtn.onclick=function(){
+  document.body.classList.toggle('darkTheme');
+  if (document.body.classList.contains('darkTheme')) {
+    darkBtn.textContent = 'Light Mode';
+  } else {
+    darkBtn.textContent = 'Dark Mode';
+}
+}

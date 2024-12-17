@@ -2,11 +2,11 @@ body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #f4f4f4;
+  background-color: var(--primary-color);
 }
 
 header {
-  background-color: #4CAF50;
+  background-color: var(--secondary-color);
   color: white;
   padding: 20px;
   text-align: center;
@@ -38,7 +38,7 @@ input, textarea, select {
 
 button {
   padding: 10px 15px;
-  background-color: #4CAF50;
+  background-color: var(--secondary-color);
   color: white;
   border: none;
   cursor: pointer;
@@ -46,6 +46,7 @@ button {
 
 button:hover {
   background-color: #45a049;
+  transition: scale(1.2);
 }
 
 ul {
@@ -82,6 +83,18 @@ button.deletebtn {
   margin-right: 10px;
 }
 
+:root {
+  --primary-color: white;
+  --secondary-color: #4caf50;
+  --tertiary-color: black;
+}
+
+.darkTheme {
+  --primary-color: black;
+  --secondary-color: grey;
+  --tertiary-color: white;
+}
+
 .task-category, .goal-category {
   margin-bottom: 20px;
 }
@@ -96,3 +109,16 @@ button.deletebtn {
   width: auto;
   padding: 5px;
 }
+
+h2 {
+  color: var(--tertiary-color);
+}
+
+#darkBtn {
+  background-color: #fff;
+  color: rgb(86, 66, 164);
+  text-decoration: underline;
+  font-family: Arial, sans-serif;
+  font-weight: bold;
+}
+

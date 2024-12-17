@@ -33,17 +33,17 @@
       </div>
       <div id="weekly-task" class="task-category">
         <input type="text" id="weekly-task-input" placeholder="New Weekly Task">
-        <button onclick="addTask('weekly-task-input', 'weekly-task-list')">Add Task</button>
+        <button id="add-task-btn" onclick="addTask('weekly-task-input', 'weekly-task-list')">Add Task</button>
         <ul id="weekly-task-list"></ul>
       </div>
       <div id="monthly-task" class="task-category" style="display:none;">
         <input type="text" id="monthly-task-input" placeholder="New Monthly Task">
-        <button onclick="addTask('monthly-task-input', 'monthly-task-list')">Add Task</button>
+        <button id="add-task-btn" onclick="addTask('monthly-task-input', 'monthly-task-list')">Add Task</button>
         <ul id="monthly-task-list"></ul>
       </div>
       <div id="yearly-task" class="task-category" style="display:none;">
         <input type="text" id="yearly-task-input" placeholder="New Yearly Task">
-        <button onclick="addTask('yearly-task-input', 'yearly-task-list')">Add Task</button>
+        <button id="add-task-btn" onclick="addTask('yearly-task-input', 'yearly-task-list')">Add Task</button>
         <ul id="yearly-task-list"></ul>
       </div>
     </section>
@@ -73,17 +73,17 @@
       </div>
       <div id="weekly-goal" class="goal-category">
         <input type="text" id="weekly-goal-input" placeholder="New Weekly Goal">
-        <button onclick="addGoal('weekly-goal-input', 'weekly-goal-list')">Add Goal</button>
+        <button id="add-goal-btn" onclick="addGoal('weekly-goal-input', 'weekly-goal-list')">Add Goal</button>
         <ul id="weekly-goal-list"></ul>
       </div>
       <div id="monthly-goal" class="goal-category" style="display:none;">
         <input type="text" id="monthly-goal-input" placeholder="New Monthly Goal">
-        <button onclick="addGoal('monthly-goal-input', 'monthly-goal-list')">Add Goal</button>
+        <button id="add-goal-btn" onclick="addGoal('monthly-goal-input', 'monthly-goal-list')">Add Goal</button>
         <ul id="monthly-goal-list"></ul>
       </div>
       <div id="yearly-goal" class="goal-category" style="display:none;">
         <input type="text" id="yearly-goal-input" placeholder="New Yearly Goal">
-        <button onclick="addGoal('yearly-goal-input', 'yearly-goal-list')">Add Goal</button>
+        <button id="add-goal-btn" onclick="addGoal('yearly-goal-input', 'yearly-goal-list')">Add Goal</button>
         <ul id="yearly-goal-list"></ul>
       </div>
     </section>
@@ -100,6 +100,8 @@
       <ul id="password-list"></ul>
     </section>
   </main>
+
+  <button id="darkBtn">Dark Mode</button>
 
   <script src="script.js"></script>
 </body>
