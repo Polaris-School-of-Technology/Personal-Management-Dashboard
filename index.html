@@ -16,9 +16,13 @@
         <li><a href="#notes">Notes</a></li>
         <li><a href="#weather">Weather</a></li>
         <li><a href="#goals">Goals</a></li>
+
+      </ul>  
+
         <li><a href="#passwords">Passwords</a></li>
         <li><a><button id='darkBtn'>Dark Mode</a></li>
       </ul>
+
     </nav>
   </header>
 
@@ -40,7 +44,18 @@
     <section id="weather">
       <h2>Weather</h2>
       <div id="weather-info">
-        <!-- Weather details will appear here -->
+
+        <label for="city">Enter your City</label>
+        <input type="text" placeholder="Enter City Name" id="City"> <!--Taking Input From The User For The City He/She Wants The Weather Data Of-->
+        <button id="weather-btn">Get Weather</button> <!-- Button To Get The Weather Data -->
+         <div id="weather-data">   <!-- Created the div to display the data coming from the API call-->
+          <p>Current Temperature: <span class="CurrentTemp"></span>°C</p>     <!--Displaying Current Temperature-->
+          <p>Feels Like: <span class="FeelsLike"></span>°C</p>    <!-- Displaying the Feels Like Temperature-->
+          <p>Maximum Temperature: <span class="MaxTemp"></span>°C</p>   <!-- Displaying the Maximum Temperature-->
+          <p>Minimum Temperature: <span class="MinTemp"></span>°C</p>   <!-- Displaying the Minimum Tempearture-->
+          <p>Humidity: <span class="Humidity"></span>%</p>    <!--Displaying the Humidity -->
+           <p>Wind Speed: <span class="WindSpeed"></span> km/h</p>  <!-- Displaying the Wind Speed-->
+         </div>
       </div>
     </section>
 
@@ -49,6 +64,9 @@
       <input type="text" id="goal-input" placeholder="Set a goal">
       <button id="add-goal-btn">Add Goal</button>
       <ul id="goal-list"></ul>
+
+    </section> 
+
     </section>
 
     <section id="passwords">
@@ -62,6 +80,7 @@
       <button id="add-password-btn">Add Password</button>
       <ul id="password-list"></ul>
     </section>
+
   </main>
 
   <script src="script.js"></script>
