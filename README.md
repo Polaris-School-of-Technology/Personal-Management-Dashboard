@@ -152,5 +152,3 @@ This project is created by **Rahat**. You can reach out via:
 
 
 ---
-
-# Personal-Management-Dashboard
