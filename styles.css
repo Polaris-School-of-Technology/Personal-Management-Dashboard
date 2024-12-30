@@ -3,13 +3,24 @@ body {
     margin: 0;
     padding: 0;
     background-color: var(--primary-color);
+    height: 100vh; 
+  }
+  #icon {
+    position: absolute;
+    top:10%;
+    left:20px;
+    font-size: 2em;
+   transform: translate(-50%);
   }
   
   header {
     background-color:var(--secondary-color);
     color: white;
     padding: 20px;
+    text-align: center; 
+    position: relative;
     text-align: center;
+    width: 100%;
   }
   
   header nav ul {
