@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Scheduler</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="calender.css">
+</head>
+<body>
+    <div class="container">
+        <div class="calendar">
+            <div class="calendar-header">
+                <button class="nav-button prev-month">
+                  <i class="fas fa-chevron-left"></i>
+                </button>
+                <h2 class="month-year"></h2>
+                <button class="nav-button next-month">
+                  <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+            <div class="calendar-grid"></div>
+        </div>
+
+        <div class="task-form">
+            <h3>Schedule a Task</h3>
+            <div class="form-group">
+                <label for="task-date">Date:</label>
+                <input type="date" id="task-date" required>
+            </div>
+            <div class="form-group">
+                <label for="task-description">Description:</label>
+                <input type="text" id="task-description" required>
+            </div>
+            <button class="save-button">Save</button>
+        </div>
+    </div>
+    <script type="module" src="calender.js"></script>
+</body>
+</html>
